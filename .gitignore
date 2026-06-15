@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# macOS
+.DS_Store
+
+# Generated local artifacts
+models/*.joblib
+models/*.pkl
+
+# Dataset images can become large.
+# Keep the folders in GitHub, but do not push the actual images by default.
+dataset/**/*.jpg
+dataset/**/*.jpeg
+dataset/**/*.png
+dataset/**/*.bmp
+!dataset/**/.gitkeep
+.DS_Store
