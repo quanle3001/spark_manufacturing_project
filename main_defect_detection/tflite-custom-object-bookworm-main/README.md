@@ -1,0 +1,1 @@
+The custom ai model using Tensorflow Lite
