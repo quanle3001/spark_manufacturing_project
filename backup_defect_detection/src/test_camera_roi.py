@@ -1,5 +1,4 @@
 import argparse
-
 import cv2
 
 from config import FRAME_WIDTH, FRAME_HEIGHT
@@ -8,15 +7,10 @@ from roi_utils import draw_roi, parse_roi
 
 def main():
     parser = argparse.ArgumentParser(description="Test webcam and fixed ROI frame.")
-    parser.add_argument("--camera-index", type=int, default=0, help="Camera index. Try 0, 1, or 2.")
+    parser.add_argument("--camera-index", type=int, default=0)
     parser.add_argument("--width", type=int, default=FRAME_WIDTH)
     parser.add_argument("--height", type=int, default=FRAME_HEIGHT)
-    parser.add_argument(
-        "--display-scale",
-        type=float,
-        default=1.5,
-        help="Scale factor for the preview window. Example: 1.5 or 2.0.",
-    )
+    parser.add_argument("--display-scale", type=float, default=1.5)
     parser.add_argument("--roi", nargs=4, type=int, default=None, metavar=("X1", "Y1", "X2", "Y2"))
     args = parser.parse_args()
 
@@ -36,13 +30,13 @@ def main():
 
     print("Camera opened successfully.")
     print(f"Using ROI: {roi}")
-    print(f"Display scale: {args.display_scale}")
     print("Press q to quit.")
 
     while True:
         ok, frame = cap.read()
+
         if not ok:
-            print("Could not read frame from camera.")
+            print("Could not read frame.")
             break
 
         display = frame.copy()
@@ -63,8 +57,7 @@ def main():
 
         cv2.imshow(window_name, display)
 
-        key = cv2.waitKey(1) & 0xFF
-        if key == ord("q"):
+        if (cv2.waitKey(1) & 0xFF) == ord("q"):
             break
 
     cap.release()

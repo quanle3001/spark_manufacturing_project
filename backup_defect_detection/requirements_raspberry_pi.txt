@@ -1,0 +1,8 @@
+numpy
+pyserial
+# Install OpenCV on Raspberry Pi with:
+# sudo apt install python3-opencv
+#
+# Install TensorFlow Lite runtime on Raspberry Pi with one of these:
+# pip3 install tflite-runtime
+# or use TensorFlow if you already installed it.
